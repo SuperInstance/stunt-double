@@ -1,0 +1,24 @@
+# .stunt.yml — Stunt Double configuration
+# Drop this in any repo to customize how stunt-double builds it.
+# All fields optional — defaults handle most repos.
+
+# Devcontainer base image
+image: python:3.12
+
+# Setup command — runs once before the main command
+setup: |
+  pip install --upgrade pip setuptools wheel 2>/dev/null || true
+  pip install -r requirements.txt 2>/dev/null || true
+
+# Codespace machine type
+machine: basicLinux32gb
+
+# Idle timeout in minutes
+idle_timeout: 30
+
+# Branch to create (default: stunt-<timestamp>)
+# branch: null means use repo default
+
+# Environment variables
+env:
+  CI: "true"
